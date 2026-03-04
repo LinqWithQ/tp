@@ -50,12 +50,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### keiran0
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/keiran0.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/keiran0)]
 
-* Role: Developer
-* Responsibilities: UI
+* Role: Student
+* Responsibilities: Pass cs2103t
