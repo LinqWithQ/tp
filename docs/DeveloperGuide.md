@@ -274,13 +274,12 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* Tutors who need to manage multiple contacts related their tutoring work (students, parents, agents)
+* Prefer desktop applications over mobile or web applications
+* Prefer keyboard/CLI interactions rather than heavy mouse usage
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app, tutors can efficiently manage profile of contacts.
+**Value proposition**: TutorMap helps private tutors manage tutoring contacts faster than typical GUI-based contact managers 
+by combining a visual interface with efficient CLI commands for quick data entry, tagging, and relationship tracking.
 
 
 ### User stories
