@@ -49,7 +49,7 @@ public interface Model {
      */
     void setTutorMap(ReadOnlyTutorMap tutorMap);
 
-    /** Returns the AddressBook */
+    /** Returns the TutorMap */
     ReadOnlyTutorMap getTutorMap();
 
     /**

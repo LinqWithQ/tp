@@ -62,7 +62,7 @@ public class JsonTutorMapStorageTest {
 
     @Test
     public void readAndSaveTutorMap_allInOrder_success() throws Exception {
-        Path filePath = testFolder.resolve("TempAddressBook.json");
+        Path filePath = testFolder.resolve("TempTutorMap.json");
         TutorMap original = getTypicalTutorMap();
         JsonTutorMapStorage jsonTutorMapStorage = new JsonTutorMapStorage(filePath);
 

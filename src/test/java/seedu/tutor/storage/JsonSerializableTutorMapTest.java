@@ -24,9 +24,9 @@ public class JsonSerializableTutorMapTest {
     public void toModelType_typicalPersonsFile_success() throws Exception {
         JsonSerializableTutorMap dataFromFile = JsonUtil.readJsonFile(TYPICAL_PERSONS_FILE,
                 JsonSerializableTutorMap.class).get();
-        TutorMap addressBookFromFile = dataFromFile.toModelType();
-        TutorMap typicalPersonsAddressBook = TypicalPersons.getTypicalTutorMap();
-        assertEquals(addressBookFromFile, typicalPersonsAddressBook);
+        TutorMap tutorMapFromFile = dataFromFile.toModelType();
+        TutorMap typicalPersonsTutorMap = TypicalPersons.getTypicalTutorMap();
+        assertEquals(tutorMapFromFile, typicalPersonsTutorMap);
     }
 
     @Test

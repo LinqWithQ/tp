@@ -12,7 +12,7 @@ import seedu.tutor.model.ReadOnlyUserPrefs;
 import seedu.tutor.model.UserPrefs;
 
 /**
- * Manages storage of AddressBook data in local storage.
+ * Manages storage of TutorMap data in local storage.
  */
 public class StorageManager implements Storage {
 
@@ -21,7 +21,7 @@ public class StorageManager implements Storage {
     private UserPrefsStorage userPrefsStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given {@code TutorMapStorage} and {@code UserPrefStorage}.
      */
     public StorageManager(TutorMapStorage tutorMapStorage, UserPrefsStorage userPrefsStorage) {
         this.tutorMapStorage = tutorMapStorage;
@@ -46,7 +46,7 @@ public class StorageManager implements Storage {
     }
 
 
-    // ================ AddressBook methods ==============================
+    // ================ TutorMap methods ==============================
 
     @Override
     public Path getTutorMapFilePath() {

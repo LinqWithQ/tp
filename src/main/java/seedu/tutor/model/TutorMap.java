@@ -31,7 +31,7 @@ public class TutorMap implements ReadOnlyTutorMap {
     public TutorMap() {}
 
     /**
-     * Creates an AddressBook using the Persons in the {@code toBeCopied}
+     * Creates an TutorMap using the Persons in the {@code toBeCopied}
      */
     public TutorMap(ReadOnlyTutorMap toBeCopied) {
         this();
@@ -49,7 +49,7 @@ public class TutorMap implements ReadOnlyTutorMap {
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code TutorMap} with {@code newData}.
      */
     public void resetData(ReadOnlyTutorMap newData) {
         requireNonNull(newData);
@@ -87,7 +87,7 @@ public class TutorMap implements ReadOnlyTutorMap {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes {@code key} from this {@code TutorMap}.
      * {@code key} must exist in the address book.
      */
     public void removePerson(Person key) {
@@ -119,8 +119,8 @@ public class TutorMap implements ReadOnlyTutorMap {
             return false;
         }
 
-        TutorMap otherAddressBook = (TutorMap) other;
-        return persons.equals(otherAddressBook.persons);
+        TutorMap otherTutorMap = (TutorMap) other;
+        return persons.equals(otherTutorMap.persons);
     }
 
     @Override

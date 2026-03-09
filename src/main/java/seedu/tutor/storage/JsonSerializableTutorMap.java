@@ -32,7 +32,7 @@ class JsonSerializableTutorMap {
     }
 
     /**
-     * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
+     * Converts a given {@code ReadOnlyTutorMap} into this class for Jackson use.
      *
      * @param source future changes to this will not affect the created {@code JsonSerializableTutorMap}.
      */
@@ -41,7 +41,7 @@ class JsonSerializableTutorMap {
     }
 
     /**
-     * Converts this address book into the model's {@code AddressBook} object.
+     * Converts this tutormap into the model's {@code TutorMap} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
