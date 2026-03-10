@@ -1,15 +1,19 @@
 package seedu.tutor.logic.commands;
 
+import seedu.tutor.commons.core.index.Index;
 import seedu.tutor.model.Model;
+
 
 public class RelateDeleteCommand extends RelateCommand{
 
-    public RelateDeleteCommand(String details) {
+    public static final String MESSAGE_SUCCESS = "";
+
+    public RelateDeleteCommand(Index index, String details) {
         //
     }
 
     @Override
     public CommandResult execute(Model model) {
-        return new CommandResult(null);
+        return new CommandResult(MESSAGE_SUCCESS);
     }
 }
