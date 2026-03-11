@@ -43,7 +43,11 @@ public class Person {
         this(name, phone, email, address, tags, new HashSet<>(), subject);
     }
 
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Set<Relation> relations, String subject) {
+    /**
+     * Complete constructor for person, other constructors kept for dependency to be removed over time
+     */
+    public Person(Name name, Phone phone, Email email, Address address,
+                  Set<Tag> tags, Set<Relation> relations, String subject) {
         requireAllNonNull(name, phone, email, address, tags, relations, subject);
         this.name = name;
         this.phone = phone;
@@ -70,7 +74,9 @@ public class Person {
         return address;
     }
 
-    public String getSubject() { return subject; }
+    public String getSubject() {
+        return subject;
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
