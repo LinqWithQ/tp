@@ -1,19 +1,22 @@
 package seedu.tutor.logic.commands;
 
-import seedu.tutor.commons.core.index.Index;
-import seedu.tutor.commons.util.ToStringBuilder;
-import seedu.tutor.logic.Messages;
-import seedu.tutor.logic.commands.exceptions.CommandException;
-import seedu.tutor.model.Model;
-import seedu.tutor.model.person.*;
-import seedu.tutor.model.relation.Relation;
+import static java.util.Objects.requireNonNull;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static java.util.Objects.requireNonNull;
+import seedu.tutor.commons.core.index.Index;
+import seedu.tutor.commons.util.ToStringBuilder;
+import seedu.tutor.logic.Messages;
+import seedu.tutor.logic.commands.exceptions.CommandException;
+import seedu.tutor.model.Model;
+import seedu.tutor.model.person.Person;
+import seedu.tutor.model.relation.Relation;
 
+/**
+ * Adds relation(s) into specified Person.
+ */
 public class RelateAddCommand extends RelateCommand {
 
     private final Index index;

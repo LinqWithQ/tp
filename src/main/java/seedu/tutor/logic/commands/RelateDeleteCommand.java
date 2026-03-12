@@ -1,5 +1,11 @@
 package seedu.tutor.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import seedu.tutor.commons.core.index.Index;
 import seedu.tutor.commons.util.ToStringBuilder;
 import seedu.tutor.logic.Messages;
@@ -8,18 +14,15 @@ import seedu.tutor.model.Model;
 import seedu.tutor.model.person.Person;
 import seedu.tutor.model.relation.Relation;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import static java.util.Objects.requireNonNull;
-
+/**
+ * Deletes relation(s) from specified Person.
+ */
 public class RelateDeleteCommand extends RelateCommand {
+
+    public static final String MESSAGE_INVALID_RELATION_TO_DELETE = "The relation does not exist in Person";
 
     private final Index index;
     private final Relation relationToDelete;
-
-    public static final String MESSAGE_INVALID_RELATION_TO_DELETE = "The relation to be deleted does not exist in Person";
 
     /**
      * Creates a RelateDeleteCommand.
