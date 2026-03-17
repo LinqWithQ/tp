@@ -28,7 +28,7 @@ public class Relation {
     }
 
     private String reverseRelation(String relationName) {
-        String[] args = relationName.split("/+");
+        String[] args = relationName.split("/");
         String temp = args[0];
         args[0] = args[1];
         args[1] = temp;
