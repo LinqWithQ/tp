@@ -69,7 +69,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 ### Viewing help : `help`
 
-Provides a message to the user displaying the list of different commands
+Provides a message to the user displaying the list of different commands.
 
 ![help message](images/helpCommand.png)
 
@@ -145,7 +145,7 @@ Examples:
 Adds a relation between the 2 specified people from the address book.
 
 Format (adding relation): `relate a\NAME 1/NAME 2/RELATION 1/RELATION 2`
-(deleting relation): `delete a\NAME 1/NAME 2/RELATION 1/RELATION 2`
+(deleting relation): `relate d\NAME 1/NAME 2/RELATION 1/RELATION 2`
 
 * To add a relation, both names must exist.
 * The relation will be updated for both contacts.
