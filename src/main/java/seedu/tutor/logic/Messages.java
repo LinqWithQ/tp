@@ -42,10 +42,12 @@ public class Messages {
                 .append("; Email: ")
                 .append(person.getEmail())
                 .append("; Address: ")
-                .append(person.getAddress())
-                .append("; Subject: ")
-                .append(person.getSubject())
-                .append("; Tags: ");
+                .append(person.getAddress());
+        if (!person.getSubject().isBlank()) {
+            builder.append(person.getSubject());
+            builder.append("; ");
+        }
+        builder.append("Tags: ");
         person.getTags().forEach(builder::append);
         return builder.toString();
     }
