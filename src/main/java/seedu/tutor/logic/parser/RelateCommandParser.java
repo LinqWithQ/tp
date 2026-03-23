@@ -2,6 +2,7 @@ package seedu.tutor.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.tutor.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.tutor.logic.Messages.REPEATED_ARGUMENT;
 import static seedu.tutor.logic.parser.CliSyntax.PREFIX_RELATE_ADD;
 import static seedu.tutor.logic.parser.CliSyntax.PREFIX_RELATE_DELETE;
 
@@ -39,12 +40,20 @@ public class RelateCommandParser implements Parser<RelateCommand> {
         Set<Relation> relationsToDelete = new HashSet<>();
         if (!argMultimap.getAllValues(PREFIX_RELATE_ADD).isEmpty()) {
             for (String rel : argMultimap.getAllValues(PREFIX_RELATE_ADD)) {
-                relationsToAdd.add(ParserUtil.parseRelation(rel));
+                Relation relation = ParserUtil.parseRelation(rel);
+                if (relationsToAdd.contains(relation)) {
+                    throw new ParseException(REPEATED_ARGUMENT);
+                }
+                relationsToAdd.add(relation);
             }
         }
         if (!argMultimap.getAllValues(PREFIX_RELATE_DELETE).isEmpty()) {
             for (String rel : argMultimap.getAllValues(PREFIX_RELATE_DELETE)) {
-                relationsToDelete.add(ParserUtil.parseRelation(rel));
+                Relation relation = ParserUtil.parseRelation(rel);
+                if (relationsToDelete.contains(relation)) {
+                    throw new ParseException(REPEATED_ARGUMENT);
+                }
+                relationsToDelete.add(relation);
             }
         }
 
