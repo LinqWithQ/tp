@@ -105,12 +105,13 @@ public class EditCommand extends Command {
                 newRelations.add(relation.changePerson(oldName, newName));
             }
             if (!oldRelations.isEmpty()) {
-                // only renew adddNewRelations when the name is changed and there is some related relation
+                // only renew adddNewRelations when the name is changed
+                // and there is some relation related to that person
                 addNewRelations = new RelateCommand(newRelations, new HashSet<>());
             }
         }
 
-        // update the name
+        // update the person
         model.setPerson(personToEdit, editedPerson);
         // if name is change, add the updated relation back, else add back the old relations
         addNewRelations.execute(model);
@@ -119,6 +120,7 @@ public class EditCommand extends Command {
         editPersonDescriptor.setRelations(newRelations);
         editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
+        // shows the change editedPerson
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
     }
