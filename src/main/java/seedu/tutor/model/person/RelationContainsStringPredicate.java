@@ -3,6 +3,7 @@ package seedu.tutor.model.person;
 import java.util.Set;
 import java.util.function.Predicate;
 
+import seedu.tutor.commons.util.ToStringBuilder;
 import seedu.tutor.model.relation.Relation;
 
 /**
@@ -44,7 +45,7 @@ public class RelationContainsStringPredicate implements Predicate<Person> {
 
     @Override
     public String toString() {
-        return string;
+        return new ToStringBuilder(this).add("keyword", string).toString();
     }
 
 }
