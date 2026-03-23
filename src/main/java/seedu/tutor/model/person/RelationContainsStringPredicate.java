@@ -14,14 +14,14 @@ public class RelationContainsStringPredicate implements Predicate<Person> {
     private final String string;
 
     public RelationContainsStringPredicate(String name) {
-        this.string = name;
+        this.string = name.toLowerCase();
     }
 
     @Override
     public boolean test(Person person) {
         Set<Relation> relations = person.getRelations();
         for (Relation r : relations) {
-            if (r.relationName.contains(string)) {
+            if (r.relationName.toLowerCase().contains(string)) {
                 return true;
             }
         }
