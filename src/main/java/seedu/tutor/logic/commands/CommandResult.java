@@ -38,6 +38,7 @@ public class CommandResult {
 
     /**
      * Merge the result of 2 CommandResult into 1.
+     * Only one of the input should be null.
      * @param result1 The first CommandResult object.
      * @param result2 The second CommandResult object.
      * @return New CommandResult object with merged feedback, showHelp and exit are false.

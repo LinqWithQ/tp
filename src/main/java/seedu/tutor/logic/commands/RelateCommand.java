@@ -164,13 +164,23 @@ public class RelateCommand extends Command {
         List<Command> commands = new ArrayList<>(addCommands);
         commands.addAll(deleteCommands);
 
+        CommandException exceptions = null;
         CommandResult results = null;
 
-        for (Command command: commands) {
-            CommandResult result = command.execute(model);
-            results = CommandResult.merge(results, result);
+        for (Command command : commands) {
+            try {
+                CommandResult result = command.execute(model);
+                results = CommandResult.merge(results, result);
+            } catch (CommandException ce) {
+                exceptions = CommandException.merge(exceptions, ce);
+            }
+
         }
 
-        return results;
+        if (exceptions != null) {
+            throw exceptions;
+        } else {
+            return results;
+        }
     }
 }
