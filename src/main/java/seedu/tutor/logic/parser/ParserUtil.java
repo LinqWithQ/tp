@@ -163,7 +163,15 @@ public class ParserUtil {
         if (!Relation.isValidRelationName(trimmedRelation)) {
             throw new ParseException(Relation.MESSAGE_CONSTRAINTS);
         }
-        return new Relation(trimmedRelation);
+
+        // Trim each segment
+        String[] parts = trimmedRelation.split("/");
+        for (int i = 0; i < parts.length; i++) {
+            parts[i] = parts[i].trim();
+        }
+        String trimmedReconstructed = String.join("/", parts);
+
+        return new Relation(trimmedReconstructed);
     }
 
     /**
