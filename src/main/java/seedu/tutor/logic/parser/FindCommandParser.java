@@ -34,9 +34,7 @@ public class FindCommandParser implements Parser<FindCommand> {
                         + "Example: find r/Alex Yeoh, find r/parent");
             }
 
-            String name = trimmedArgs.split("/")[1];
-
-            return new FindCommand(new RelationContainsStringPredicate(name));
+            return new FindCommand(new RelationContainsStringPredicate(split[1]));
         }
 
         String[] nameKeywords = trimmedArgs.split("\\s+");
