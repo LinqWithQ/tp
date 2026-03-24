@@ -64,7 +64,7 @@ public class RelateDeleteCommand extends Command {
     }
 
     /**
-     * Creates and returns a {@code Person} with the details of {@code personToAddRelation}
+     * Creates and returns a {@code Person} with the details of {@code personToDeleteRelation}
      */
     private static Person createDeleteRelationPerson(Person personToDeleteRelation, Relation relationToDelete) {
         assert personToDeleteRelation != null;

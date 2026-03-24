@@ -1,14 +1,14 @@
 ---
   layout: default.md
-  title: "User Guide"
-  pageNav: 3
+    title: "User Guide"
+    pageNav: 3
 ---
 
 # User Guide
 
-TutorMap is a **desktop app for managing tutees, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). TutorMap helps you manage tutee details, including addresses, phone numbers, subjects taught, and family relationships (like siblings or parents), in one place. It replaces messy Excel sheets so users can focus on teaching, not admin.
+TutorMap is a **desktop app for private tutors to manage tutees, optimized for use via a Command Line Interface** (CLI) while still retaining mouse-based visual elements. TutorMap helps you manage tutee details in one place, including addresses, phone numbers, subjects taught, and relationships between contacts (eg. students, parents and agents).
 
-TutorMap is optimized for tutors, who likely have basic computer skills, use apps like WhatsApp for parent communication, and track tutees in spreadsheets or notes. It serves users who want a simple tool to stay organized without complex software.
+TutorMap offers you a simple way to stay organized without complex software. If you have basic computer skills, and have been tracking tutees in spreadsheets or notes, then TutorMap is for you. It replaces messy spreadsheets so you can focus on teaching, not admin.
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -33,7 +33,7 @@ TutorMap is optimized for tutors, who likely have basic computer skills, use app
 
     * `list` : Lists all contacts.
 
-    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the TutorMap.
 
     * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -73,7 +73,7 @@ TutorMap is optimized for tutors, who likely have basic computer skills, use app
 
 Provides a message to the user displaying the list of different commands.
 
-Format: `help`
+Command format: `help`
 
 ![help message](images/helpCommand.png)
 
@@ -82,9 +82,9 @@ Format: `help`
 
 Adds a person to TutorMap.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT] [t/TAG]…​`
+Command format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT] [t/TAG]…​`
 
-Notes: 
+Notes:
 * A person can have any number of tags (including 0)
 * A person can have any number of subjects (including 0)
 
@@ -97,15 +97,15 @@ Examples:
 
 Shows a list of all persons in TutorMap.
 
-Format: `list`
+Command format: `list`
 
 ### Editing a person : `edit`
 
 Edits an existing person in TutorMap.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG] [s/SUBJECT]…​`
+Command format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG] [s/SUBJECT]…​`
 
-Notes: 
+Notes:
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, ...
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
@@ -116,14 +116,14 @@ Notes:
 Examples:
 * `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 * `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
-* `edit 3 s/` Clears existing subject for the 3rd person. 
+* `edit 3 s/` Clears existing subject for the 3rd person.
 * `edit 3 s/Math` Edits the subject of the 3rd person to be `Math`.
 
 ### Locating persons by name: `find`
 
 Finds persons whose names contain any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Command format: `find KEYWORD [MORE_KEYWORDS]`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
@@ -139,26 +139,29 @@ Examples:
 
 ### Adding or deleting a relation : `relate`
 
-Adds a relation between the 2 specified people from TutorMap.
+Adds a relation between 2 specified people in TutorMap.
 
-Format (adding relation): `relate a\NAME 1/NAME 2/RELATION 1/RELATION 2`
-(deleting relation): `relate d\NAME 1/NAME 2/RELATION 1/RELATION 2`
+Command format (adding relation): `relate a\NAME 1/NAME 2/RELATION 1/RELATION 2`  
+Command format (deleting relation): `relate d\NAME 1/NAME 2/RELATION 1/RELATION 2`
 
 * To add a relation, both names must exist.
-* The relation will be updated for both contacts.
-* To delete the relation, both the name and the relation must match an existing relation.
-* The command is case-sensitive for NAME e.g. `David` will not match `david`
-* The command is case-sensitive for RELATION e.g. `Student` will not match `student`
+* To delete the relation, all the names and relations must match an existing relation in the same format.
+* The relation will be updated for both persons.
+* Upon adding, `Person 1` and how `Person 2` is related to them will be shown on `Person 1`'s contact, and vice versa for `Person 2`.
+* `RELATION 1` refers to how `NAME 1` is related to `NAME 2`. eg. `Teacher Alex/Bernice Yu/Teacher/Student` means that `Teacher Alex` is `Bernice Yu`'s `Teacher`
+* `RELATION 2` refers to how `NAME 2` is related to `NAME 1`.  eg. `Teacher Alex/Bernice Yu/Teacher/Student` means that `Bernice Yu` is `Teacher Alex`'s `Student`
+* The command is case-sensitive for `NAME` e.g. `David` will not match `david`
+* The command is case-sensitive for `RELATION` e.g. `Student` will not match `student`
 
 Examples:
-* `relate a\Alex Yeoh/Bernice Yu/test1/test2` will create a relation for both `Alex Yeoh` and `Bernice Yu`
-* `relate d\Alex Yeoh/Bernice Yu/test1/test2` will delete the relation for both `Alex Yeoh` and `Bernice Yu`
+* `relate a\Teacher Alex/Bernice Yu/Teacher/Student` will create a relation for both `Teacher Alex` and `Bernice Yu`.
+* `relate d\Teacher Alex/Bernice Yu/Teacher/Student` will delete the relation for both `Teacher Alex` and `Bernice Yu`
 
 ### Deleting a person : `delete`
 
 Deletes the specified person from TutorMap.
 
-Format: `delete INDEX`
+Command format: `delete INDEX`
 
 * Deletes the person at the specified `INDEX`.
 * The index refers to the index number shown in the displayed person list.
@@ -172,13 +175,13 @@ Examples:
 
 Clears all entries from the tutor map.
 
-Format: `clear`
+Command format: `clear`
 
 ### Exiting the program : `exit`
 
 Exits the program.
 
-Format: `exit`
+Command format: `exit`
 
 ### Saving the data
 
@@ -222,5 +225,5 @@ Action     | Format, Examples
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
 **Help**   | `help`
-**Relate** (add) | `relate a\person1/person2/relationship1/relationship2`
-**Relate** (delete)| `relate d\person1/person2/relationship1/relationship2`
+**Relate** (add) | `relate a\NAME 1/NAME 2/RELATION 1/RELATION 2`<br> e.g., `relate a\Teacher Alex/Bernice Yu/Teacher/Student`
+**Relate** (delete)| `relate d\NAME 1/NAME 2/RELATION 1/RELATION 2`<br> e.g., `relate d\Teacher Alex/Bernice Yu/Teacher/Student`
