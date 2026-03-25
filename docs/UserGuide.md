@@ -99,6 +99,7 @@ Command format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT] [t/TAG]
 Notes:
 * A person can have any number of tags (including 0)
 * A person can have any number of subjects (including 0)
+* Person fields are case-sensitive (e.g. `John Doe` and `john doe` are different names, `Math` and `math` are different subjects)
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
@@ -130,6 +131,15 @@ Examples:
 * `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 * `edit 3 s/` Clears existing subject for the 3rd person.
 * `edit 3 s/Math` Edits the subject of the 3rd person to be `Math`.
+* `edit 4 s/English s/Science` Edits the subjects of the 4th person to be `English` and `Science`.
+
+<box type="tip" seamless>
+
+**Tip:**
+Use the edit command to add tags or subjects to an existing person by including the existing tags or subjects in the edit command. 
+e.g. if the person at index 1 has an existing tag `friend`, `edit 1 t/friend t/colleague` will add the tag `colleague` while keeping the existing tag `friend`.
+
+</box>
 
 ### <span id="finding-persons"></span>Locating persons by name: `find`
 
