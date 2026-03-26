@@ -17,7 +17,7 @@ public class RelateCommandParserTest {
     private final String[] extraArgs = new String[] {" n/bruh a\\test/test/test/tes", " a\\1/1/1/1 e/ a\\2/2/2/2",
         " d\\4/4/4/4 d\\5/5/5/5 p/0123456 a\\6/6/6/6"};
     private final String[] samePerson = new String[] {" a\\test/test/test/test", " a\\1/1/1/1 a\\2/2/2/2",
-            "  d\\3/3/3/3", " d\\4/4/4/4 d\\5/5/5/5 a\\6/6/6/6"};
+        "  d\\3/3/3/3", " d\\4/4/4/4 d\\5/5/5/5 a\\6/6/6/6"};
 
     @Test
     public void parse_validFormatInput_success() {
