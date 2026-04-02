@@ -36,11 +36,7 @@ public class SubjectCommandParser implements Parser<SubjectCommand> {
             index = null;
         }
 
-        int argumentCount = argMultimap.getAllValues(PREFIX_CHANGE_SUBJECT).size()
-                + argMultimap.getAllValues(PREFIX_DELETE_SUBJECT).size()
-                + argMultimap.getAllValues(PREFIX_EDIT_SUBJECT).size();
-
-        if (argumentCount != 1) {
+        if (countChar(args, '\\') > 1) {
             throw new ParseException(MESSAGE_INVALID_COMMAND_FORMAT + SubjectCommand.MESSAGE_USAGE);
         }
 
@@ -82,5 +78,20 @@ public class SubjectCommandParser implements Parser<SubjectCommand> {
 
         // should not reach here
         return null;
+    }
+
+    /**
+     * Counts the amount of a character in a String object.
+     * @param s The String object.
+     * @param c The character to be counted.
+     */
+    private int countChar(String s, char c) {
+        int count = 0;
+        for (char temp: s.toCharArray()) {
+            if (temp == c) {
+                count++;
+            }
+        }
+        return count;
     }
 }
