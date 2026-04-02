@@ -91,7 +91,7 @@ Command format: `help`
 
 Adds a person to TutorMap.
 
-Command format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT] [t/TAG]…​`
+Command format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT] [t/TAG]…`
 
 Notes:
 * A person can have any number of tags (including 0)
@@ -137,6 +137,32 @@ Use the edit command to add tags or subjects to an existing person by including 
 e.g. if the person at index 1 has an existing tag `friend`, `edit 1 t/friend t/colleague` will add the tag `colleague` while keeping the existing tag `friend`.
 
 </box>
+
+### <span id="relating-persons"></span>Adding or deleting a relation : `relate`
+
+Adds a relation between 2 specified people in TutorMap.
+
+Command format (adding relation): `relate a\NAME1/NAME2/RELATION1/RELATION2`  
+Command format (deleting relation): `relate d\NAME1/NAME2/RELATION1/RELATION2`
+
+Notes:
+* To add a relation, both names must exist.
+* `NAME1` and `NAME2` must be different, adding relation to the person itself is not allowed.
+* To delete the relation, all the names and relations must match an existing relation in the same format.
+* The relation will be updated for both persons.
+* Upon adding, `Person 1` and how `Person 2` is related to them will be shown on `Person 1`'s contact, and vice versa for `Person 2`.
+* `RELATION1` refers to how `NAME1` is related to `NAME2`. eg. `Teacher Alex/Bernice Yu/Teacher/Student` means that `Teacher Alex` is `Bernice Yu`'s `Teacher`
+* `RELATION2` refers to how `NAME2` is related to `NAME1`.  eg. `Teacher Alex/Bernice Yu/Teacher/Student` means that `Bernice Yu` is `Teacher Alex`'s `Student`
+* Relations are bidirectional, `Teacher Alex/Bernice Yu/Teacher/Student` is equivalent to `Bernice Yu/Teacher Alex/Student/Teacher`.
+* The command is case-sensitive for `NAME` e.g. `David` will not match `david`
+* The command is case-sensitive for `RELATION` e.g. `Student` will not match `student`
+* Supports multiple addition and/or deletion operations in the same command e.g. `relate a/a\NAME1/NAME2/RELATION1/RELATION2 d\NAME3/NAME4/RELATION3/RELATION4 ...`, `relate a/NAME1/NAME2/RELATION1/RELATION2 a/NAME3/NAME4/RELATION3/RELATION4 ...`
+
+Examples:
+* `relate a\Teacher Alex/Bernice Yu/Teacher/Student` will create a relation for both `Teacher Alex` and `Bernice Yu`.
+* `relate d\Teacher Alex/Bernice Yu/Teacher/Student` will delete the relation for both `Teacher Alex` and `Bernice Yu`
+* `relate a\Bernice Yu/Alex Yeoh/parent/child d\David Li/Charlotte Oliveiro/brother1/brother2` will add a relation for `Bernice Yu` and `Alex Yeoh` and delete the relation for `David Li` and `Charlotte Oliveiro`
+
 
 ### <span id="finding-persons"></span>Locating persons by name: `find`
 
