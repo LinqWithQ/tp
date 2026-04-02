@@ -16,7 +16,7 @@ import seedu.tutor.model.label.Label;
 /**
  * Parses input arguments and returns a new ChangeSubjectCommand object
  */
-public class ChangeSubjectCommandParser implements Parser<ChangeSubjectCommand> {
+public class SubjectCommandParser implements Parser<ChangeSubjectCommand> {
 
     private static final String SUBJECT_NAME_ERROR = "Subject name should be alphanumerical.";
 
