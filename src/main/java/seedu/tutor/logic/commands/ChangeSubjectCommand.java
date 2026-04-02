@@ -1,5 +1,12 @@
 package seedu.tutor.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import seedu.tutor.logic.commands.exceptions.CommandException;
 import seedu.tutor.logic.parser.EditCommandParser;
 import seedu.tutor.logic.parser.exceptions.ParseException;
@@ -7,19 +14,20 @@ import seedu.tutor.model.Model;
 import seedu.tutor.model.label.Label;
 import seedu.tutor.model.person.Person;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import static java.util.Objects.requireNonNull;
-
-public class ChangeSubjectCommand extends Command{
+/**
+ * Change a subject across the whole list.
+ */
+public class ChangeSubjectCommand extends Command {
 
     private final Label oldSubject;
     private final Label newSubject;
     private final EditCommandParser parser = new EditCommandParser();
 
+    /**
+     * Returns a Command object that changes a particular subject across the whole list.
+     * @param oldSubject The name of the subject to be changed.
+     * @param newSubject The name of the subject to be added.
+     */
     public ChangeSubjectCommand(String oldSubject, String newSubject) {
         this.oldSubject = new Label(oldSubject);
         this.newSubject = new Label(newSubject);
@@ -30,7 +38,7 @@ public class ChangeSubjectCommand extends Command{
 
         requireNonNull(model);
         List<Person> persons = model.getTutorMap().getPersonList();
-        List<Command> editCommands= new ArrayList<>();
+        List<Command> editCommands = new ArrayList<>();
 
         for (int index = 0; index < persons.size(); index++) {
             Person person = persons.get(index);
