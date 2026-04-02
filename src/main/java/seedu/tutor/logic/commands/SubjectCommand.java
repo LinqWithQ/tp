@@ -56,6 +56,7 @@ public class SubjectCommand extends Command {
     }
 
     private Command getCommand() throws CommandException {
+
         switch (this.type) {
 
         case CHANGE:
@@ -71,10 +72,10 @@ public class SubjectCommand extends Command {
             return new DeleteSubjectCommand(this.subjects);
 
         case EDIT:
-        if (this.subjects.length == 0) {
-            throw new CommandException("Input error: there should be at least one subject");
-        }
-        return new EditSubjectCommand(this.index, this.subjects);
+            if (this.subjects.length == 0) {
+                throw new CommandException("Input error: there should be at least one subject");
+            }
+            return new EditSubjectCommand(this.index, this.subjects);
 
         default:
             // should not reach here

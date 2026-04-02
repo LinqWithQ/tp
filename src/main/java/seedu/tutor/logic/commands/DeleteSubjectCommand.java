@@ -1,5 +1,12 @@
 package seedu.tutor.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import seedu.tutor.logic.commands.exceptions.CommandException;
 import seedu.tutor.logic.parser.EditCommandParser;
 import seedu.tutor.logic.parser.exceptions.ParseException;
@@ -7,18 +14,18 @@ import seedu.tutor.model.Model;
 import seedu.tutor.model.label.Label;
 import seedu.tutor.model.person.Person;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import static java.util.Objects.requireNonNull;
-
+/**
+ * Delete subject/s across all person
+ */
 public class DeleteSubjectCommand extends Command {
 
     private final Label[] labelsToDelete;
     private final EditCommandParser parser = new EditCommandParser();
 
+    /**
+     * Return a DeleteSubjectCommand object that deletes subject's across all person.
+     * @param labelsToDelete An array of subject/s as Label object to be deleted.
+     */
     public DeleteSubjectCommand(Label[] labelsToDelete) {
         this.labelsToDelete = labelsToDelete;
     }
