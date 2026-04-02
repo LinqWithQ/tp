@@ -28,7 +28,7 @@ public class ChangeSubjectCommand extends Command {
      * @param oldSubject The name of the subject to be changed.
      * @param newSubject The name of the subject to be added.
      */
-    ChangeSubjectCommand(Label oldSubject, Label newSubject) throws CommandException {
+    ChangeSubjectCommand(Label oldSubject, Label newSubject) {
         this.oldSubject = oldSubject;
         this.newSubject = newSubject;
     }
@@ -57,7 +57,6 @@ public class ChangeSubjectCommand extends Command {
                 }
                 EditCommand editCommand;
                 try {
-                    System.out.println(input);
                     editCommand = parser.parse(input.toString());
                 } catch (ParseException pe) {
                     throw new CommandException("Unknown error, by ChangeSubjectCommand");

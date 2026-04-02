@@ -6,6 +6,8 @@ import static seedu.tutor.logic.parser.CliSyntax.PREFIX_CHANGE_SUBJECT;
 import static seedu.tutor.logic.parser.CliSyntax.PREFIX_DELETE_SUBJECT;
 import static seedu.tutor.logic.parser.CliSyntax.PREFIX_EDIT_SUBJECT;
 
+import seedu.tutor.commons.core.index.Index;
+import seedu.tutor.logic.commands.EditCommand;
 import seedu.tutor.logic.commands.SubjectCommand;
 import seedu.tutor.logic.parser.exceptions.ParseException;
 import seedu.tutor.model.label.Label;
@@ -27,6 +29,14 @@ public class SubjectCommandParser implements Parser<SubjectCommand> {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_EDIT_SUBJECT, PREFIX_CHANGE_SUBJECT,
                 PREFIX_DELETE_SUBJECT);
 
+        Index index;
+
+        try {
+            index = ParserUtil.parseIndex(argMultimap.getPreamble());
+        } catch (ParseException pe) {
+            index = null;
+        }
+
         int argumentCount = argMultimap.getAllValues(PREFIX_CHANGE_SUBJECT).size()
                 + argMultimap.getAllValues(PREFIX_DELETE_SUBJECT).size()
                 + argMultimap.getAllValues(PREFIX_EDIT_SUBJECT).size();
@@ -38,7 +48,7 @@ public class SubjectCommandParser implements Parser<SubjectCommand> {
         if (argMultimap.getValue(PREFIX_CHANGE_SUBJECT).isPresent()) {
             String temp0 = argMultimap.getValue(PREFIX_CHANGE_SUBJECT).get();
             String[] temp1 = temp0.split("/");
-            if (temp1.length != 2 || temp0.endsWith("/")) {
+            if (temp1.length != 2 || temp0.endsWith("/") || index != null) {
                 throw new ParseException(MESSAGE_INVALID_COMMAND_FORMAT + SubjectCommand.MESSAGE_USAGE);
             }
             Label[] labels = new Label[2];
@@ -48,7 +58,27 @@ public class SubjectCommandParser implements Parser<SubjectCommand> {
             } catch (ParseException pe) {
                 throw new ParseException(SUBJECT_NAME_ERROR);
             }
-            return new SubjectCommand(SubjectCommand.SubjectCommandType.CHANGE, labels);
+            return new SubjectCommand(null, SubjectCommand.SubjectCommandType.CHANGE, labels);
+        }
+
+        if (argMultimap.getValue(PREFIX_EDIT_SUBJECT).isPresent()) {
+            String temp0 = argMultimap.getValue(PREFIX_EDIT_SUBJECT).get();
+            String[] temp1 = temp0.split("/");
+            if (temp1.length == 0 || temp0.endsWith("/") || index == null) {
+                throw new ParseException(MESSAGE_INVALID_COMMAND_FORMAT + SubjectCommand.MESSAGE_USAGE);
+            }
+            Label[] labels = new Label[temp1.length];
+            for (int i = 0; i < temp1.length; i++) {
+                Label temp;
+                try {
+                    temp = ParserUtil.parseTag(temp1[i]);
+                } catch (ParseException pe) {
+                    throw new ParseException(SUBJECT_NAME_ERROR);
+                }
+                labels[i] = temp;
+            }
+
+            return new SubjectCommand(index, SubjectCommand.SubjectCommandType.EDIT, labels);
         }
 
         // should not reach here

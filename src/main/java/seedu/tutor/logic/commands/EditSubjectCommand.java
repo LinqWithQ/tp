@@ -57,6 +57,9 @@ public class EditSubjectCommand extends Command {
 
         Set<String> strs = new HashSet<>();
         for (Label l: newSubjects) {
+            if (l == null) {
+                continue;
+            }
             strs.add(l.labelName);
         }
 
@@ -64,6 +67,10 @@ public class EditSubjectCommand extends Command {
         for (String s: strs) {
             input.append(" s/");
             input.append(s);
+        }
+
+        if (strs.isEmpty()) {
+            input.append(" s/");
         }
 
         EditCommand command;
