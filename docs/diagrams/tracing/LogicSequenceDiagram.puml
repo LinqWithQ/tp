@@ -19,6 +19,6 @@ ecp -> ec ++: Command(parsed arguments)
 ec --> ecp --
 ecp --> abp --: command
 abp --> logic --: command
-<- logic --: command.execute()
+<- logic --: command.execute(model)
 
 @enduml
