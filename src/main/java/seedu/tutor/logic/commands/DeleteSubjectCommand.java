@@ -12,15 +12,15 @@ import seedu.tutor.model.label.Label;
 import seedu.tutor.model.person.Person;
 
 /**
- * Deletes subject/s across all person
+ * Deletes subject(s) across all person
  */
 public class DeleteSubjectCommand extends Command {
 
     private final Label[] subjectsToDelete;
 
     /**
-     * Returns a DeleteSubjectCommand object that deletes subject's across all person.
-     * @param subjectsToDelete An array of subject/s as Label object to be deleted.
+     * Returns a DeleteSubjectCommand object that deletes subjects across all person.
+     * @param subjectsToDelete An array of subject(s) as Label object to be deleted.
      */
     protected DeleteSubjectCommand(Label[] subjectsToDelete) {
         requireNonNull(subjectsToDelete);
@@ -44,7 +44,7 @@ public class DeleteSubjectCommand extends Command {
             }
         }
 
-        StringBuilder result = new StringBuilder("Deleted subject/s: ");
+        StringBuilder result = new StringBuilder("Deleted subject(s): ");
         for (Label subject: deletedSubjects) {
             result.append(subject.labelName);
             result.append(" ");

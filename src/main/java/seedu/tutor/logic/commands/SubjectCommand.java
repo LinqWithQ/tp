@@ -1,9 +1,9 @@
 package seedu.tutor.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.tutor.logic.parser.CliSyntax.PREFIX_CHANGE_SUBJECT;
-import static seedu.tutor.logic.parser.CliSyntax.PREFIX_DELETE_SUBJECT;
-import static seedu.tutor.logic.parser.CliSyntax.PREFIX_EDIT_SUBJECT;
+import static seedu.tutor.logic.parser.CliSyntax.PREFIX_SUBJECT_CHANGE;
+import static seedu.tutor.logic.parser.CliSyntax.PREFIX_SUBJECT_DELETE;
+import static seedu.tutor.logic.parser.CliSyntax.PREFIX_SUBJECT_EDIT;
 
 import seedu.tutor.commons.core.index.Index;
 import seedu.tutor.logic.commands.exceptions.CommandException;
@@ -11,7 +11,7 @@ import seedu.tutor.model.Model;
 import seedu.tutor.model.label.Label;
 
 /**
- * Changes subject field of a particular person or, change or delete a particular subject across all person
+ * Changes the Subject field of a Person, or changes/deletes a subject across all Persons.
  */
 public class SubjectCommand extends Command {
 
@@ -21,17 +21,17 @@ public class SubjectCommand extends Command {
             + "or delete subject/s across all person "
             + "or change a particular subject across all person.\n"
             + "Parameters: "
-            + "[" + PREFIX_CHANGE_SUBJECT + "OLD_SUBJECT/NEW_SUBJECT] "
+            + "[" + PREFIX_SUBJECT_CHANGE + "OLD_SUBJECT/NEW_SUBJECT] "
             + "or "
-            + "[" + PREFIX_DELETE_SUBJECT + "SUBJECT1/SUBJECT2/SUBJECT3/...] "
+            + "[" + PREFIX_SUBJECT_DELETE + "SUBJECT1/SUBJECT2/SUBJECT3/...] "
             + "or "
-            + "INDEX (must be a positive integer) + [" + PREFIX_EDIT_SUBJECT + "SUBJECT1/SUBJECT2/SUBJECT3/...]\n"
+            + "INDEX (must be a positive integer) + [" + PREFIX_SUBJECT_EDIT + "SUBJECT1/SUBJECT2/SUBJECT3/...]\n"
             + "Example:\n"
-            + COMMAND_WORD + " " + PREFIX_CHANGE_SUBJECT + "Math/AddMath\n"
-            + COMMAND_WORD + " " + PREFIX_DELETE_SUBJECT + "Math/Science/Chinese/History\n"
-            + COMMAND_WORD + " " + PREFIX_DELETE_SUBJECT + "Math/Biology\n"
-            + COMMAND_WORD + " 1 " + PREFIX_EDIT_SUBJECT + "Math/Science/Chinese/History\n"
-            + COMMAND_WORD + " 2 " + PREFIX_EDIT_SUBJECT + "Physic/Chemistry";
+            + COMMAND_WORD + " " + PREFIX_SUBJECT_CHANGE + "Math/AddMath\n"
+            + COMMAND_WORD + " " + PREFIX_SUBJECT_DELETE + "Math/Science/Chinese/History\n"
+            + COMMAND_WORD + " " + PREFIX_SUBJECT_DELETE + "Math/Biology\n"
+            + COMMAND_WORD + " 1 " + PREFIX_SUBJECT_EDIT + "Math/Science/Chinese/History\n"
+            + COMMAND_WORD + " 2 " + PREFIX_SUBJECT_EDIT + "Physic/Chemistry";
 
     /**
      * Types of SubjectCommand

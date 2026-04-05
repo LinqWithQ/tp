@@ -24,7 +24,8 @@ public class EditSubjectCommand extends Command {
     private final Label[] subjectsToEdits;
 
     /**
-     * Returns a EditSubjectCommand object which edits a peron's subject field with xor operation.
+     * Returns an EditSubjectCommand object that adds a subject if it doesn't exist,
+     * or removes it if it exists in the Person's Subject field.
      * @param index The index of the person to be edited.
      * @param subjectsToEdits The subjects to be added or removed.
      */
@@ -50,16 +51,21 @@ public class EditSubjectCommand extends Command {
         Set<Label> newSubjects = subjectsXorOperation(mutableOldSubjects,
                 new HashSet<>(Arrays.asList(subjectsToEdits)));
 
-        Person edittedPerson = createEditSubjectPerson(personToEditSubject, newSubjects);
-        model.setPerson(personToEditSubject, edittedPerson);
+        Person editedPerson = createEditSubjectPerson(personToEditSubject, newSubjects);
+        model.setPerson(personToEditSubject, editedPerson);
 
-        StringBuilder result = new StringBuilder("Edited " + edittedPerson.getName()
+        StringBuilder result = new StringBuilder("Edited " + editedPerson.getName()
                 + "'s subject field, now contains: ");
-        for (Label subject: edittedPerson.getSubjects()) {
+        for (Label subject: editedPerson.getSubjects()) {
             result.append(subject.labelName);
             result.append(" ");
         }
-        return new CommandResult(result.toString());
+
+        if (!editedPerson.getSubjects().isEmpty()) {
+            return new CommandResult(result.toString());
+        } else {
+            return new CommandResult(editedPerson.getName() + "'s subject field has been emptied");
+        }
     }
 
     /**

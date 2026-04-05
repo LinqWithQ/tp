@@ -19,7 +19,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_RELATE_DELETE = new Prefix("d\\");
 
     // sub-SubjectCommand prefixes
-    public static final Prefix PREFIX_EDIT_SUBJECT = new Prefix("e\\");
-    public static final Prefix PREFIX_CHANGE_SUBJECT = new Prefix("c\\");
-    public static final Prefix PREFIX_DELETE_SUBJECT = PREFIX_RELATE_DELETE;
+    public static final Prefix PREFIX_SUBJECT_CHANGE = new Prefix("c\\");
+    public static final Prefix PREFIX_SUBJECT_DELETE = new Prefix("d\\");
+    public static final Prefix PREFIX_SUBJECT_EDIT = new Prefix("e\\");
 }
