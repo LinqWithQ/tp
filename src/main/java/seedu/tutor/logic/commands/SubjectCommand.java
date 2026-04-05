@@ -17,8 +17,8 @@ public class SubjectCommand extends Command {
 
     public static final String COMMAND_WORD = "subject";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edit subject/s for a particular person "
-            + "or delete subject/s across all person "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edit subject(s) for a particular person "
+            + "or delete subject(s) across all person "
             + "or change a particular subject across all person.\n"
             + "Parameters: "
             + "[" + PREFIX_SUBJECT_CHANGE + "OLD_SUBJECT/NEW_SUBJECT] "
