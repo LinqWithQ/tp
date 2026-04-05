@@ -12,7 +12,8 @@ public class HelpCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows program usage instructions.\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String SHOWING_HELP_MESSAGE = "Available commands:\n"
+    public static final String SHOWING_HELP_MESSAGE = "User guide: https://ay2526s2-cs2103t-w12-3.github.io/tp/"
+            + "Available commands:\n"
             + "add n/NAME p/PHONE e/EMAIL a/ADDRESS [s/SUBJECT]\n"
             + "e.g., add n/James Ho p/22224444 e/jamesho@example.com"
             + "a/123, Clementi Rd, 1234665 t/friend t/colleague s/math\n"
