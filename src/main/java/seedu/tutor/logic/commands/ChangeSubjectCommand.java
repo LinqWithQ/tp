@@ -15,7 +15,7 @@ import seedu.tutor.model.label.Label;
 import seedu.tutor.model.person.Person;
 
 /**
- * Change a subject across the whole list.
+ * Changes a subject across the whole list.
  */
 public class ChangeSubjectCommand extends Command {
 
@@ -26,7 +26,7 @@ public class ChangeSubjectCommand extends Command {
     /**
      * Returns a Command object that changes a particular subject across the whole list.
      * @param oldSubject The name of the subject to be changed.
-     * @param newSubject The name of the subject to be added.
+     * @param newSubject The name of the subject after changed.
      */
     ChangeSubjectCommand(Label oldSubject, Label newSubject) {
         this.oldSubject = oldSubject;

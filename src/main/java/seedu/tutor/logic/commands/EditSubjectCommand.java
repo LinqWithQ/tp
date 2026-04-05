@@ -16,7 +16,7 @@ import seedu.tutor.model.label.Label;
 import seedu.tutor.model.person.Person;
 
 /**
- * Edit a person's subject field using xor operation.
+ * Edits a person's subject field using xor operation.
  */
 public class EditSubjectCommand extends Command {
 

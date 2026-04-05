@@ -15,7 +15,7 @@ import seedu.tutor.model.label.Label;
 import seedu.tutor.model.person.Person;
 
 /**
- * Delete subject/s across all person
+ * Deletes subject/s across all person
  */
 public class DeleteSubjectCommand extends Command {
 
@@ -23,7 +23,7 @@ public class DeleteSubjectCommand extends Command {
     private final EditCommandParser parser = new EditCommandParser();
 
     /**
-     * Return a DeleteSubjectCommand object that deletes subject's across all person.
+     * Returns a DeleteSubjectCommand object that deletes subject's across all person.
      * @param labelsToDelete An array of subject/s as Label object to be deleted.
      */
     public DeleteSubjectCommand(Label[] labelsToDelete) {

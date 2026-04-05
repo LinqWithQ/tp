@@ -19,7 +19,7 @@ import seedu.tutor.model.person.Person;
 import seedu.tutor.model.relation.Relation;
 
 /**
- * Add and/or delete multiple relation between two person in the list.
+ * Adds and/or deletes multiple relation between two person in the list.
  * Bidirectional, Relation object is added or deleted on both Person object.
  * Relations are added first, then delete.
  */
@@ -47,7 +47,7 @@ public class RelateCommand extends Command {
     private final Set<Relation> relationsToDelete;
 
     /**
-     * Return a command that add and/or delete multiple relation.
+     * Returns a command that add and/or delete multiple relation.
      * @param relationsToAdd A set of relation to be added.
      * @param relationsToDelete A set of relation to be deleted.
      */
@@ -59,6 +59,7 @@ public class RelateCommand extends Command {
     }
 
     /**
+     * Returns a concrete type of Command object that add or delete a relation.
      * A factory for the creation of subtypes of RelateCommand.
      * @param type Type of {@code RelationCommand} that is intended by the user.
      * @param relation The relation object that represent the relation between two contact.
