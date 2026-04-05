@@ -93,7 +93,7 @@ public class RelateCommand extends Command {
     /**
      * Returns the index of a person with the name.
      * @param name The name of the person.
-     * @param model
+     * @param model The TutorMap model.
      * @return The index in the form of Index object.
      */
     private Index getIndex(String name, Model model) {
