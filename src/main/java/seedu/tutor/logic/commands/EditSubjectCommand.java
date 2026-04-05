@@ -47,7 +47,7 @@ public class EditSubjectCommand extends Command {
         Person personToEditSubject = lastShownList.get(index.getZeroBased());
         Set<Label> oldSubjects = personToEditSubject.getSubjects();
         Set<Label> mutableOldSubjects = new HashSet<>(oldSubjects);
-        Set<Label> newSubjects = subjectsXorOperarion(mutableOldSubjects,
+        Set<Label> newSubjects = subjectsXorOperation(mutableOldSubjects,
                 new HashSet<Label>(Arrays.asList(subjectsToEdits)));
 
         Person edittedPerson = createEditSubjectPerson(personToEditSubject, newSubjects);
@@ -80,7 +80,13 @@ public class EditSubjectCommand extends Command {
         );
     }
 
-    private static Set<Label> subjectsXorOperarion(Collection<Label> currentSubjects,
+    /**
+     * Merges two Collection objects using xor operation.
+     * @param currentSubjects The first Collection object.
+     * @param subjectsToEdit The second Collection object.
+     * @return The merge result in a Set object.
+     */
+    private static Set<Label> subjectsXorOperation(Collection<Label> currentSubjects,
                                                    Collection<Label> subjectsToEdit) {
         for (Label subject: subjectsToEdit) {
             if (currentSubjects.contains(subject)) {
