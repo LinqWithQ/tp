@@ -62,10 +62,9 @@ public class RelateCommand extends Command {
 
     /**
      * Returns a concrete type of Command object that add or delete a relation.
-     * A factory for the creation of subtypes of RelateCommand.
      * @param type Type of {@code RelationCommand} that is intended by the user.
      * @param relation The relation object that represent the relation between two contact.
-     * @return Subtype of RelateCommand.
+     * @return The concrete command for adding or deleting relation.
      */
     private static Command createCommand(Index index, RelateCommandType type, Relation relation) {
 

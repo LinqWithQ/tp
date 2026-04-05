@@ -55,6 +55,9 @@ public class SubjectCommand extends Command {
         this.subjects = subjects;
     }
 
+    /**
+     * Returns a concrete type of Command object that changes or deletes or edits subject(s).
+     */
     private Command getCommand() throws CommandException {
 
         switch (this.type) {
