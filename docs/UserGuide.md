@@ -15,7 +15,7 @@ TutorMap offers you a simple way to stay organized without complex software. If 
   - [Adding or deleting a relation : `relate`](#relating-persons)
   - [Locating persons by name: `find`](#finding-persons)
   - [Locating persons by relation: `find r/`](#finding-persons-by-relation)
-  - [change, delete or edit subjects(s) : `subject`](#span-idsubject-commandspanchanging-deleting-or-editing-subjects-subject)
+  - [Rename, delete or edit subjects(s) : `subject`](#span-idsubject-commandspanchanging-deleting-or-editing-subjects-subject)
   - [Deleting a person : `delete`](#deleting-person)
   - [Clearing all entries : `clear`](#clearing-entries)
   - [Exiting the program : `exit`](#exiting-program)
@@ -224,7 +224,7 @@ Simply typing `s/C` will match both Chemistry and Chinese subjects!
 
 </box>
 
-### <span id="subject-command"></span>Changing, deleting, or editing subject(s): `subject`
+### <span id="subject-command"></span>Rename, deleting, or editing subject(s): `subject`
 
 Changes a subject name across all persons, deletes subject(s) across all persons, or edits one person's subject field.
 
