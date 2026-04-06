@@ -15,7 +15,7 @@ TutorMap offers you a simple way to stay organized without complex software. If 
   - [Adding or deleting a relation : `relate`](#relating-persons)
   - [Locating persons by name: `find`](#finding-persons)
   - [Locating persons by relation: `find r/`](#finding-persons-by-relation)
-  - [Rename, delete or edit subjects(s) : `subject`](#span-idsubject-commandspanchanging-deleting-or-editing-subjects-subject)
+  - [Renaming, deleting or editing a subject : `subject`](#span-idsubject-commandspanchanging-deleting-or-editing-subjects-subject)
   - [Deleting a person : `delete`](#deleting-person)
   - [Clearing all entries : `clear`](#clearing-entries)
   - [Exiting the program : `exit`](#exiting-program)
@@ -226,21 +226,19 @@ Simply typing `s/C` will match both Chemistry and Chinese subjects!
 
 ### <span id="subject-command"></span>Rename, deleting, or editing subject(s): `subject`
 
-Changes a subject name across all persons, deletes subject(s) across all persons, or edits one person's subject field.
+Renames a subject name across all persons, deletes subject(s) across all persons, or edits one person's subject field.
 
-Command format (change a subject's name): `subject c\SUBJECT1/SUBJECT2`  
-Command format (delete subject(s)): `subject d\SUBJECT1/SUBJECT2/SUBJECT3/...`  
-Command format (edit a person's subject field): `subject INDEX e\SUBJECT1/SUBJECT2/SUBJECT3/...`
+Command format: 
+* `subject [d\SUBJECT1/SUBJECT2/SUBJECT3/...]`  
+* `subject INDEX [e\SUBJECT1/SUBJECT2/SUBJECT3/...]`
+* `subject [r\SUBJECT1/SUBJECT2]`
 
 Notes:
-* All `SUBJECT` values must be alphanumeric and non-empty.
-* For changing a subject's name:
-    * `c\SUBJECT1/SUBJECT2` changes every instance of `SUBJECT1` to `SUBJECT2` across all persons' subject fields.
-    * Changing a non-existing `SUBJECT` is allowed. `No subject changed.` will be returned.
+* All `SUBJECT` values must be alphanumeric only and non-empty.
 * For deleting subject(s):
     * `d\SUBJECT1/SUBJECT2/SUBJECT3` deletes every instance of `SUBJECT1`, `SUBJECT2`, and `SUBJECT3` across all persons' subject fields.
     * `d\` accepts any positive number of subjects.
-    * Deleting a non-existing `SUBJECT` is allowed. `No subject deleted.` will be returned.
+    * Deleting a non-existing `SUBJECT` is allowed. `No subject deleted.` will be returned if no subject is deleted.
 * For editing a person's subject field:
     * `INDEX e\SUBJECT1/SUBJECT2/...` edits the `INDEX`-th shown person's subject field by toggling each listed subject.
     * `Index` must be a positive integer.
@@ -249,13 +247,16 @@ Notes:
         * a missing subject is added.
     * `e\` accepts any positive number of subjects.
     * This command may add and remove subjects in a single use.
+* For renaming a subject:
+    * `r\SUBJECT1/SUBJECT2` renames every instance of `SUBJECT1` to `SUBJECT2` across all persons' subject fields.
+    * Renaming a non-existing `SUBJECT` is allowed. `No subject renamed.` will be returned if no subject is renamed.
 
 Example:
-* `subject c\Maths/Mathematics`
 * `subject d\Mathematics/Mandrin`
 * `subject d\Biology/Physic/Chemistry/History/Art`
 * `subject 1 e\Maths/Biology`
 * `subject 2 e\Physic/Chemistry/History/Art`
+* `subject r\Maths/Mathematics`
 
 ### <span id="deleting-person"></span>Deleting a person : `delete`
 
@@ -327,3 +328,7 @@ Action     | Format, Examples
 **Help**   | `help`
 **Relate** (add) | `relate a\NAME1/NAME2/RELATION1/RELATION2`<br> e.g., `relate a\Teacher Alex/Bernice Yu/Teacher/Student`
 **Relate** (delete)| `relate d\NAME1/NAME2/RELATION1/RELATION2`<br> e.g., `relate d\Teacher Alex/Bernice Yu/Teacher/Student`
+**Subject** (delete)|`subject [d\SUBJECT1/SUBJECT2/SUBJECT3/...]`<br> e.g., `subject d\Art/History/Mandrin/English`
+**Subject** (edit)|`subject INDEX [e\SUBJECT1/SUBJECT2/SUBJECT3/...]`<br> e.g., `subject 1 e\Art/History/Mandrin/English`
+**Subject** (rename)|`subject [r\SUBJECT1/SUBJECT2]`<br> e.g., `subject r\Math/Mathematic`
+
