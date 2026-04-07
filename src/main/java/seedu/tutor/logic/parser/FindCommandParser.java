@@ -11,8 +11,8 @@ import seedu.tutor.model.person.EmailContainsStringPredicate;
 import seedu.tutor.model.person.NameContainsKeywordsPredicate;
 import seedu.tutor.model.person.PhoneNumberContainsStringPredicate;
 import seedu.tutor.model.person.RelationContainsStringPredicate;
-import seedu.tutor.model.person.TagContainsStringPredicate;
 import seedu.tutor.model.person.SubjectContainsStringPredicate;
+import seedu.tutor.model.person.TagContainsStringPredicate;
 
 /**
  * Parses input arguments and creates a new FindCommand object
@@ -123,7 +123,8 @@ public class FindCommandParser implements Parser<FindCommand> {
             return new FindCommand(new EmailContainsStringPredicate(trimmed));
         }
 
-        throw new ParseException("Prefix missing! Find must be followed by either 'n/', 'a/', 'p/', 'e/', 's/', 'r/' or 't/' "
+        throw new ParseException("Prefix missing! Find must be followed by either "
+                + "'n/', 'a/', 'p/', 'e/', 's/', 'r/' or 't/' "
                 + "depending on what field is being searched for.");
     }
 
