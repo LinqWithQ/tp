@@ -15,6 +15,7 @@ TutorMap offers you a simple way to stay organized without complex software. If 
   - [Adding or deleting a relation : `relate`](#relating-persons)
   - [Locating persons by name: `find`](#finding-persons)
   - [Locating persons by relation: `find r/`](#finding-persons-by-relation)
+  - [Locating persons by tag: `find t/`](#finding-persons-by-tag)
   - [Renaming, deleting or editing subject(s): `subject`](#subject-command)
   - [Deleting a person : `delete`](#deleting-person)
   - [Clearing all entries : `clear`](#clearing-entries)
@@ -201,6 +202,20 @@ Examples:
 * `r/mother` will find everyone who is a mother, or has a mother
 * `r/Alex Yeoh` will find everyone related to Alex Yeoh and himself
 * `r/a` will find everyone who has the letter `a` in the relation (matching names and/or roles)
+
+### <span id="finding-persons-by-tag"></span>Locating persons by tag: `find t/KEYWORD`
+
+Finds persons that have a tag containing the keyword.
+
+Command format: `find t/KEYWORD`
+
+Notes:
+* The search is case-insensitive: For example, `friend` will match `Friend`
+* Partial matches are allowed. For example, searching `t/fr` will return results whose tag contains `fr`
+
+Examples:
+* `t/friend` will find everyone labelled with a tag that is or contains `friend`
+* `t/paid` will find everyone who is labelled with a tag that is or contains `paid` (e.g. `paidFees`)
 
 ### <span id="finding-persons-by-subject"></span>Locating persons by subject: `find s/KEYWORD`
 

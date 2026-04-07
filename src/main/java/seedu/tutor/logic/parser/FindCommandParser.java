@@ -11,6 +11,7 @@ import seedu.tutor.model.person.EmailContainsStringPredicate;
 import seedu.tutor.model.person.NameContainsKeywordsPredicate;
 import seedu.tutor.model.person.PhoneNumberContainsStringPredicate;
 import seedu.tutor.model.person.RelationContainsStringPredicate;
+import seedu.tutor.model.person.TagContainsStringPredicate;
 import seedu.tutor.model.person.SubjectContainsStringPredicate;
 
 /**
@@ -70,6 +71,18 @@ public class FindCommandParser implements Parser<FindCommand> {
             return new FindCommand(new SubjectContainsStringPredicate(trimmed));
         }
 
+        if (trimmedArgs.startsWith("t/")) {
+            String trimmed = trimmedArgs.substring(2).trim();
+            String slashRegex = "[ /]+$";
+            if (trimmed.isEmpty() || trimmed.matches(slashRegex)) {
+                throw new ParseException("Keyword missing! Please specify a non-space, "
+                        + "non-slash keyword (tag) after 't/' \n"
+                        + "Example: find t/friend, find t/homework");
+            }
+
+            return new FindCommand(new TagContainsStringPredicate(trimmed));
+        }
+
         if (trimmedArgs.startsWith("a/")) {
 
             String trimmed = trimmedArgs.substring(2).trim();
@@ -110,7 +123,7 @@ public class FindCommandParser implements Parser<FindCommand> {
             return new FindCommand(new EmailContainsStringPredicate(trimmed));
         }
 
-        throw new ParseException("Prefix missing! Find must be followed by either 'n/', 's/', 'a/', 'p/', 'e/' or 'r/' "
+        throw new ParseException("Prefix missing! Find must be followed by either 'n/', 'a/', 'p/', 'e/', 's/', 'r/' or 't/' "
                 + "depending on what field is being searched for.");
     }
 
