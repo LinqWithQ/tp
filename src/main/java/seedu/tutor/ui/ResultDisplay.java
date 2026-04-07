@@ -12,7 +12,6 @@ import javafx.scene.layout.Region;
 public class ResultDisplay extends UiPart<Region> {
 
     private static final String FXML = "ResultDisplay.fxml";
-    private static final String STARTUP_MESSAGE = "Type 'help' to get started";
 
     @FXML
     private TextArea resultDisplay;
@@ -22,7 +21,6 @@ public class ResultDisplay extends UiPart<Region> {
      */
     public ResultDisplay() {
         super(FXML);
-        setFeedbackToUser(STARTUP_MESSAGE);
     }
 
     public void setFeedbackToUser(String feedbackToUser) {
