@@ -11,15 +11,15 @@ import seedu.tutor.model.Model;
 import seedu.tutor.model.label.Label;
 
 /**
- * Changes the Subject field of a Person, or renames/deletes a subject across displayed person.
+ * Changes the Subject field of a Person, or renames/deletes a subject across displayed persons.
  */
 public class SubjectCommand extends Command {
 
     public static final String COMMAND_WORD = "subject";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Delete subject(s) across displayed person "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Delete subject(s) across displayed persons "
             + "or edit subject(s) for a particular person "
-            + "or rename a particular subject across displayed person.\n"
+            + "or rename a particular subject across displayed persons.\n"
             + "Parameters: "
             + "[" + PREFIX_SUBJECT_DELETE + "SUBJECT1/SUBJECT2/SUBJECT3/...] "
             + "or "

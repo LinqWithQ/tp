@@ -155,7 +155,7 @@ public class RelateCommand extends Command {
                 } else {
                     prefix = PREFIX_RELATE_DELETE;
                 }
-                throw new CommandException(Messages.PERSONS_DOES_NOT_EXIST + " By: " + prefix + relation.relationName);
+                throw new CommandException(Messages.PERSONS_DOES_NOT_EXIST + ": " + prefix + relation.relationName);
             }
 
             // Checks the presence of relations
