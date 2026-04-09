@@ -13,13 +13,7 @@ TutorMap offers you a simple way to stay organized without complex software. If 
   - [Listing all persons : `list`](#listing-persons)
   - [Editing a person : `edit`](#editing-person)
   - [Adding or deleting a relation : `relate`](#relating-persons)
-  - [Locating persons by name: `find n/`](#finding-persons-by-name)
-  - [Locating persons by relation: `find r/`](#finding-persons-by-relation)
-  - [Locating persons by tag: `find t/`](#finding-persons-by-tag)
-  - [Locating persons by subject: `find s/`](#finding-persons-by-subject)
-  - [Locating persons by email: `find e/`](#finding-persons-by-email)
-  - [Locating persons by address: `find a/`](#finding-persons-by-address)
-  - [Locating persons by phone: `find p/`](#finding-persons-by-phone)
+  - [Finding persons: `find prefix/KEYWORD`](#finding-persons)
   - [Renaming, deleting or editing subject(s): `subject`](#subject-command)
   - [Deleting a person : `delete`](#deleting-person)
   - [Clearing all entries : `clear`](#clearing-entries)
@@ -170,126 +164,35 @@ Examples:
 * `relate d\Teacher Alex/Bernice Yu/Teacher/Student` will delete the relation for both `Teacher Alex` and `Bernice Yu`
 * `relate a\Bernice Yu/Alex Yeoh/parent/child d\David Li/Charlotte Oliveiro/brother1/brother2` will add a relation for `Bernice Yu` and `Alex Yeoh` and delete the relation for `David Li` and `Charlotte Oliveiro`
 
+### <span id="finding-persons"></span>Finding persons: `find prefix/KEYWORD`
 
-### <span id="finding-persons-by-name"></span>Locating persons by name: `find n/KEYWORD [KEYWORDS]`
+Finds and displays anyone who has the KEYWORD contained in their field specified by the prefix.
 
-Finds persons whose names contain any of the given keywords.
-
-Command format: `find n/KEYWORD [MORE_KEYWORDS]`
-
-Notes: 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Partial searching is supported (i.e. `find n/al` will display anyone with `al` in their names)
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
-
-Examples:
-* `find n/John` returns `john` and `John Doe`
-* `find n/alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
-
-### <span id="finding-persons-by-relation"></span>Locating persons by relation: `find r/KEYWORD`
-
-Finds persons that have a relation containing the keyword.
-
-Command format: `find r/KEYWORD`
-
-Notes:
-* The input being matched is the same input as the input given in the creation/deletion of relations
-* The search is case-insensitive: e.g `hans` will match `Hans`
-* As relations are bidirectional, searching `Bernice Yu/Alex Yeoh` is equivalent to searching `Alex Yeoh/Bernice Yu`
-* Partial matches are allowed. For example, searching `r` will return results everyone that has a relation containing `r`
-* Tip: Be as specific as possible. While the app supports searching by a string like `ce/bo` resulting in relations between `Alice` and `Bob` to appear, the freedom may seem unintuitive. The list of suggested usages are displayed below.
+- Valid prefixes: `n`, `p`, `a`, `s`, `t`, `r`
+  - `n`: Search by name
+  - `p`: Search by phone number
+  - `a`: Search by address
+  - `s`: Search by subject
+  - `t`: Search by tag
+  - `r`: Search by relation
+- All searches are case-insensitive. e.g. `hans` will match `Hans`
+- Partial searching is supported. However, it is advised to be as specific as possible. While the app supports a command that looks like `find r/ce/bo`, resulting in relations between `Alice` and `Bob` to appear, the freedom may seem unintuitive.
+- As relations are bidirectional, `find r/Bernice Yu/Alex Yeoh` is equivalent to `find r/Alex Yeoh/Bernice Yu`
+- For finding by relation, the input being matched is the same input as the input given in the creation/deletion of relations
+- Special note about finding by name: Supports multiple inputs. `find n/Sally David` will display anyone who has *either* `Sally` or `David` in their name.
 
 Examples:
-* `r/mother` will find everyone who is a mother, or has a mother
-* `r/brother/sister` will find all brothers who have sister(s), and sisters who have brother(s)
-* `r/Alex Yeoh` will find everyone related to Alex Yeoh and himself
-* `r/Alex Yeoh/Bernice Yu` will display both people to see the relations between them
-* `r/a` will find everyone who has the letter `a` in the relation (matching names and/or roles)
-
-### <span id="finding-persons-by-tag"></span>Locating persons by tag: `find t/KEYWORD`
-
-Finds persons that have a tag containing the keyword.
-
-Command format: `find t/KEYWORD`
-
-Notes:
-* The search is case-insensitive: For example, `online` will match `Online`
-* Partial matches are allowed. For example, searching `t/On` will return results whose tag contains `On`
-
-Examples:
-* `t/online` will find everyone labelled with a tag that is or contains `online`
-* `t/paid` will find everyone who is labelled with a tag that is or contains `paid` (e.g. `paidFees`)
-
-### <span id="finding-persons-by-subject"></span>Locating persons by subject: `find s/KEYWORD`
-
-Finds persons that have a subject containing the keyword.
-
-Command format: `find s/KEYWORD`
-
-Notes:
-* The search is case-insensitive: For example, `Math` will match `math`
-* Partial matches are allowed. For example, searching `M` will return results everyone that has a subject label containing `M`
-
-Examples:
-* `s/Math` will find everyone labelled with the subject that is or contains `Math`
-* `s/C` will find everyone who is labelled with the subject that is or contains `C` (e.g. `Chemistry`, `Science`)
-
-<box type="tip" seamless>
-
-**Tip:**
-To find persons with a specific subject, find subjects by typing the full subject name such as `s/Chinese` or `s/Chemistry`.
-Simply typing `s/C` will match both Chemistry and Chinese subjects!
-
-</box>
-
-### <span id="finding-persons-by-email"></span>Locating persons by email: `find e/KEYWORD`
-
-Finds persons that have an email containing the keyword.
-
-Command format: `find e/KEYWORD`
-
-Notes:
-* The search is case-insensitive: For example, `John@FAKEMAIL.com` will match `john@fakemail.com`
-* Partial matches are allowed. For example, searching `M` will display everyone that has an email address containing the letter `M`
-
-Examples:
-* `e/gmail` will find everyone whose email contains `gmail`
-* `e/C` will find everyone who is labelled with the subject that is or contains `C` (e.g. `clara@fakemail.com`, `example@example.com`)
-
-### <span id="finding-persons-by-address"></span>Locating persons by address: `find a/KEYWORD`
-
-Finds persons that have an address containing the keyword.
-
-Command format: `find a/KEYWORD`
-
-Notes:
-* The search is case-insensitive. e.g `blk` will match `BLK`
-* Only the address is searched
-* Partial searching is supported (i.e. `find a/21` will display anyone with `21` in their addresses)
-* Order of the characters matter. For example, `a/Kent Ridge` is not the same as `a/Ridge Kent`
-
-Examples:
-* `a/Blk` will find everyone whose address contains `Blk`
-* `a/Street` will find everyone whose address contains `Street`
-* `a/l` will find everyone whose address contains `l`
-
-### <span id="finding-persons-by-phone"></span>Locating persons by phone: `find p/KEYWORD`
-
-Finds persons that have a phone number containing the keyword.
-
-Command format: `find p/KEYWORD`
-
-Notes:
-* The search will only accept numbers
-* Partial searching is supported (i.e. `find p/21` will display anyone with `21` in their numbers)
-* Order of the characters matter. For example, `p/123` is not the same as `p/321`
-
-Examples:
-* `p/8` will find everyone whose number contains `8`
+* `find n/John` will find everyone with `john` in their name
+* `find n/John Bill` will find everyone with `john` OR `bill` in in their name 
+* `find t/online` will find everyone labelled with a tag that is or contains `online`
+* `find r/mother` will find everyone who is a mother, or has a mother
+* `find r/brother/sister` will find all brothers who have sister(s), and sisters who have brother(s)
+* `find r/Alex Yeoh` will find everyone related to Alex Yeoh and himself
+* `find r/Alex Yeoh/Bernice Yu` will display both people to see the relations between them
+* `find s/Math` will find everyone labelled with the subject that is or contains `Math`
+* `find e/gmail` will find everyone whose email contains `gmail`
+* `find a/Blk` will find everyone whose address contains `Blk`
+* `find p/8` will find everyone whose number contains `8`
 
 ### <span id="subject-command"></span>Renaming, deleting, or editing subject(s): `subject`
 
