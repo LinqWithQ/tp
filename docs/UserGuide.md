@@ -12,9 +12,11 @@ TutorMap offers you a simple way to stay organized without complex software. If 
   - [Adding a person: `add`](#adding-person)
   - [Listing all persons : `list`](#listing-persons)
   - [Editing a person : `edit`](#editing-person)
+  - [Adding or deleting a relation : `relate`](#relating-persons)
   - [Locating persons by name: `find`](#finding-persons)
   - [Locating persons by relation: `find r/`](#finding-persons-by-relation)
-  - [Adding or deleting a relation : `relate`](#relating-persons)
+  - [Locating persons by tag: `find t/`](#finding-persons-by-tag)
+  - [Renaming, deleting or editing subject(s): `subject`](#subject-command)
   - [Deleting a person : `delete`](#deleting-person)
   - [Clearing all entries : `clear`](#clearing-entries)
   - [Exiting the program : `exit`](#exiting-program)
@@ -48,7 +50,7 @@ TutorMap offers you a simple way to stay organized without complex software. If 
 
     * `delete 3` : Deletes the 3rd contact shown in the current list.
 
-    * `clear` : Deletes all contacts.
+    * `clear confirm` : Deletes all contacts.
 
     * `exit` : Exits the app.
 
@@ -72,7 +74,7 @@ TutorMap offers you a simple way to stay organized without complex software. If 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
+* Extraneous parameters for commands that do not take in parameters (such as `help`, `list` and `exit`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
@@ -143,8 +145,9 @@ e.g. if the person at index 1 has an existing tag `friend`, `edit 1 t/friend t/c
 
 Adds a relation between 2 specified people in TutorMap.
 
-Command format (adding relation): `relate a\NAME1/NAME2/RELATION1/RELATION2`  
-Command format (deleting relation): `relate d\NAME1/NAME2/RELATION1/RELATION2`
+Command format: `relate [a\RELATION]... [d\RELATION]...`
+
+`RELATION` format: `Person1/Person2/Relation-Name1/Relation-Name2`
 
 Notes:
 * To add a relation, both names must exist.
@@ -201,6 +204,20 @@ Examples:
 * `r/Alex Yeoh` will find everyone related to Alex Yeoh and himself
 * `r/a` will find everyone who has the letter `a` in the relation (matching names and/or roles)
 
+### <span id="finding-persons-by-tag"></span>Locating persons by tag: `find t/KEYWORD`
+
+Finds persons that have a tag containing the keyword.
+
+Command format: `find t/KEYWORD`
+
+Notes:
+* The search is case-insensitive: For example, `online` will match `Online`
+* Partial matches are allowed. For example, searching `t/On` will return results whose tag contains `On`
+
+Examples:
+* `t/online` will find everyone labelled with a tag that is or contains `online`
+* `t/paid` will find everyone who is labelled with a tag that is or contains `paid` (e.g. `paidFees`)
+
 ### <span id="finding-persons-by-subject"></span>Locating persons by subject: `find s/KEYWORD`
 
 Finds persons that have a subject containing the keyword.
@@ -223,29 +240,39 @@ Simply typing `s/C` will match both Chemistry and Chinese subjects!
 
 </box>
 
-### <span id="relating-persons"></span>Adding or deleting a relation : `relate`
+### <span id="subject-command"></span>Renaming, deleting, or editing subject(s): `subject`
 
-Adds a relation between 2 specified people in TutorMap.
+Renames a subject name across all persons, deletes subject(s) across all persons, or edits one person's subject field.
 
-Command format: `relate [a\RELATION]... [d\RELATION]...`
+Command format: 
+* `subject [d\SUBJECT1/SUBJECT2/SUBJECT3/...]`  
+* `subject INDEX [e\SUBJECT1/SUBJECT2/SUBJECT3/...]`
+* `subject [r\SUBJECT1/SUBJECT2]`
 
-`RELATION` format: `Person1/Person2/Relation-Name1/Relation-Name2`
+Notes:
+* All `SUBJECT` values must be alphanumeric only and non-empty.
+* For deleting subject(s):
+    * `d\SUBJECT1/SUBJECT2/SUBJECT3` deletes every instance of `SUBJECT1`, `SUBJECT2`, and `SUBJECT3` across all persons' subject fields.
+    * `d\` accepts any positive number of subjects.
+    * Deleting a non-existing `SUBJECT` is allowed. `No subject deleted.` will be returned if no subject is deleted.
+* For editing a person's subject field:
+    * `INDEX e\SUBJECT1/SUBJECT2/...` edits the `INDEX`-th shown person's subject field by toggling each listed subject.
+    * `Index` must be a positive integer.
+    * Toggling means:
+        * an existing subject is removed;
+        * a missing subject is added.
+    * `e\` accepts any positive number of subjects.
+    * This command may add and remove subjects in a single use.
+* For renaming a subject:
+    * `r\SUBJECT1/SUBJECT2` renames every instance of `SUBJECT1` to `SUBJECT2` across all persons' subject fields.
+    * Renaming a non-existing `SUBJECT` is allowed. `No subject renamed.` will be returned if no subject is renamed.
 
-Notes: 
-* To add a relation, both names must exist.
-* To delete the relation, all the names and relations must match an existing relation in the same format.
-* The relation will be updated for both persons.
-* Upon adding, `Person 1` and how `Person 2` is related to them will be shown on `Person 1`'s contact, and vice versa for `Person 2`.
-* `RELATION1` refers to how `NAME1` is related to `NAME2`. eg. `Teacher Alex/Bernice Yu/Teacher/Student` means that `Teacher Alex` is `Bernice Yu`'s `Teacher`
-* `RELATION2` refers to how `NAME2` is related to `NAME1`.  eg. `Teacher Alex/Bernice Yu/Teacher/Student` means that `Bernice Yu` is `Teacher Alex`'s `Student`
-* The command is case-sensitive for `NAME` e.g. `David` will not match `david`
-* The command is case-sensitive for `RELATION` e.g. `Student` will not match `student`
-* Supports addition and deletion operations in the same command e.g. 
-
-Examples:
-* `relate a\Teacher Alex/Bernice Yu/Teacher/Student` will create a relation for both `Teacher Alex` and `Bernice Yu`.
-* `relate d\Teacher Alex/Bernice Yu/Teacher/Student` will delete the relation for both `Teacher Alex` and `Bernice Yu`
-* `relate a\Bernice Yu/Alex Yeoh/parent/child d\David Li/Charlotte Oliveiro/brother1/brother2` will add a relation for `Bernice Yu` and `Alex Yeoh` and delete the relation for `David Li` and `Charlotte Oliveiro`
+Example:
+* `subject d\Mathematics/Mandrin`
+* `subject d\Biology/Physic/Chemistry/History/Art`
+* `subject 1 e\Maths/Biology`
+* `subject 2 e\Physic/Chemistry/History/Art`
+* `subject r\Maths/Mathematics`
 
 ### <span id="deleting-person"></span>Deleting a person : `delete`
 
@@ -264,9 +291,11 @@ Examples:
 
 ### <span id="clearing-entries"></span>Clearing all entries : `clear`
 
-Clears all entries from the tutor map.
+Clears all entries from the tutor map. As a safety measure, `clear` returns the command usage information, and does not actually clear the output.
 
-Command format: `clear`
+Command format: `clear confirm`
+
+**Caution**: This action is irreversible! Use `clear confirm` to clear. Any parameters other than `confirm` will abort the clearing.
 
 ### <span id="exiting-program"></span>Exiting the program : `exit`
 
@@ -308,7 +337,7 @@ Furthermore, certain edits can cause the TutorMap to behave in unexpected ways (
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]... [t/TAG]...` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/relative's child s/math`
-**Clear**  | `clear`
+**Clear**  | `clear confirm`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **Edit**   | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [s/SUBJECT]... [t/TAG]...`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find (by name)**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
@@ -316,3 +345,7 @@ Action     | Format, Examples
 **List**   | `list`
 **Help**   | `help`
 **Relate** | `relate [a\RELATION]... [d\RELATION]...`<br> e.g., `relate a\Bernice Yu/Alex Yeoh/parent/child d\David Li/Charlotte Oliveiro/brother1/brother2`
+**Subject** (delete)|`subject [d\SUBJECT1/SUBJECT2/SUBJECT3/...]`<br> e.g., `subject d\Art/History/Mandrin/English`
+**Subject** (edit)|`subject INDEX [e\SUBJECT1/SUBJECT2/SUBJECT3/...]`<br> e.g., `subject 1 e\Art/History/Mandrin/English`
+**Subject** (rename)|`subject [r\SUBJECT1/SUBJECT2]`<br> e.g., `subject r\Math/Mathematic`
+

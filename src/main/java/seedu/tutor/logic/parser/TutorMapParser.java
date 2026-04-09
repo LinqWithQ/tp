@@ -18,6 +18,7 @@ import seedu.tutor.logic.commands.FindCommand;
 import seedu.tutor.logic.commands.HelpCommand;
 import seedu.tutor.logic.commands.ListCommand;
 import seedu.tutor.logic.commands.RelateCommand;
+import seedu.tutor.logic.commands.SubjectCommand;
 import seedu.tutor.logic.parser.exceptions.ParseException;
 
 /**
@@ -64,7 +65,7 @@ public class TutorMapParser {
             return new DeleteCommandParser().parse(arguments);
 
         case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
+            return new ClearCommandParser().parse(arguments);
 
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
@@ -76,10 +77,13 @@ public class TutorMapParser {
             return new ExitCommand();
 
         case HelpCommand.COMMAND_WORD:
-            return new HelpCommand();
+            return new HelpCommand(arguments);
 
         case RelateCommand.COMMAND_WORD:
             return new RelateCommandParser().parse(arguments);
+
+        case SubjectCommand.COMMAND_WORD:
+            return new SubjectCommandParser().parse(arguments);
 
         default:
             logger.finer("This user input caused a ParseException: " + userInput);
