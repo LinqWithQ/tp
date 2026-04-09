@@ -241,7 +241,7 @@ Simply typing `s/C` will match both Chemistry and Chinese subjects!
 
 ### <span id="subject-command"></span>Renaming, deleting, or editing subject(s): `subject`
 
-Renames a subject name across all persons, deletes subject(s) across all persons, or edits one person's subject field.
+Renames a subject name across all persons, deletes subject(s) across all displayed persons, or edits one person's subject field.
 
 Command format: 
 * `subject [d\SUBJECT1/SUBJECT2/SUBJECT3/...]`  
@@ -251,7 +251,7 @@ Command format:
 Notes:
 * All `SUBJECT` values must be alphanumeric only and non-empty.
 * For deleting subject(s):
-    * `d\SUBJECT1/SUBJECT2/SUBJECT3` deletes every instance of `SUBJECT1`, `SUBJECT2`, and `SUBJECT3` across all persons' subject fields.
+    * `d\SUBJECT1/SUBJECT2/SUBJECT3` deletes every instance of `SUBJECT1`, `SUBJECT2`, and `SUBJECT3` across all displayed persons' subject fields.
     * `d\` accepts any positive number of subjects.
     * Deleting a non-existing `SUBJECT` is allowed. `No subject deleted.` will be returned if no subject is deleted.
 * For editing a person's subject field:
@@ -263,7 +263,7 @@ Notes:
     * `e\` accepts any positive number of subjects.
     * This command may add and remove subjects in a single use.
 * For renaming a subject:
-    * `r\SUBJECT1/SUBJECT2` renames every instance of `SUBJECT1` to `SUBJECT2` across all persons' subject fields.
+    * `r\SUBJECT1/SUBJECT2` renames every instance of `SUBJECT1` to `SUBJECT2` across all displayed persons' subject fields.
     * Renaming a non-existing `SUBJECT` is allowed. `No subject renamed.` will be returned if no subject is renamed.
 
 Example:
