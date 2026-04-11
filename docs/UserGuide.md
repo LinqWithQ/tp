@@ -83,7 +83,9 @@ TutorMap offers you a simple way to stay organized without complex software. If 
 
 Provides a message to the user displaying the list of different commands.
 
-Command format: `help`
+Command format: 
+* `help`
+* `help [COMMAND]`
 
 Notes:
 * The user can type in a command after 'help' to see how to use that command.
@@ -243,9 +245,7 @@ Notes:
 Examples:
 * `subject r\Maths/Mathematics` will rename every instance of `Maths` to `Mathematics` across all currently listed persons' subject fields.
 * `subject d\Mathematics/Mandarin` will delete every instance of `Mathematics` and `Mandarin` across all persons' subject fields.
-* `subject d\Biology/Physics/Chemistry/History/Art` will delete every instance of `Biology`, `Physics`, `Chemistry`, `History`, and `Art` across all persons' subject fields.
-* `subject 1 e\Maths/Biology` will edit the subject field of the 1st shown person by toggling `Maths` and `Biology`. If the person already has `Maths` as a subject, it will be removed. If the person does not have `Biology` as a subject, it will be added.
-* `subject 2 e\Physics/Chemistry/History/Art` will edit the subject field of the 2nd shown person by toggling `Physics`, `Chemistry`, `History`, and `Art`. If the person already has `Physics` as a subject, it will be removed. If the person does not have `Chemistry` as a subject, it will be added. If the person already has `History` as a subject, it will be removed. If the person does not have `Art` as a subject, it will be added.
+* `subject 2 e\Physics/Chemistry/History/Art` will edit the subject field of the 2nd shown person by toggling `Physics`, `Chemistry`, `History`, and `Art`. If the person already has `Physics` and `Chemistry`as a subject, it will be removed. If the person does not have `History` and `Art` as a subject, it will be added.
 
 ### <span id="deleting-person"></span>Deleting a person : `delete`
 
