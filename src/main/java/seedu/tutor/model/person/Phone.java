@@ -15,7 +15,7 @@ public class Phone {
                     + "optionally prefixed with a parenthesized country code.\n"
                     + "Example: (+65)12389123, 12398123, (1809)12312093, (23-39)1289312";
     public static final String VALIDATION_REGEX = "^(?=(?:\\D*\\d){3,})(\\(\\+?\\d+\\))?"
-            + "(\\(\\d+\\))?[\\s-]?\\d+(?:[\\s-]\\d+)*$";
+            + "(\\(\\d+\\))?[\\s-]?\\d([\\s-]?\\d){2,}$";
     public final String value;
 
     /**
