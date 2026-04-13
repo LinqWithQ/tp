@@ -623,7 +623,7 @@ testers are expected to do more *exploratory* testing.
 
 ### Finding Contacts
 
-1. Testing the flexibility of the esarch system across different prefixes.
+1. Testing the flexibility of the search system across different prefixes.
 
     1. Test Case (Multiple Name Search): find n/Sally David
        Expected: Lists all persons whose names contain "Sally" OR "David".
