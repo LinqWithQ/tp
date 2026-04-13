@@ -523,7 +523,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should run on any mainstream OS that supports Java without requiring OS-specific setup beyond Java.
+1.  Should run on any mainstream OS that supports Java without requiring OS-specific setup beyond Java and JDK.
 2.  All user data should be stored locally on the user’s device.
 3.  Should not artificially restrict the number of contacts i.e. performance limited by user's hardware only.
 4.  Should not impose a hard limit on the number of labels per contact.
