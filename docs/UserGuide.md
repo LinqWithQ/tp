@@ -88,7 +88,7 @@ Command format:
 * `help [COMMAND]`
 
 Notes:
-* The user can type in a command after 'help' to see how to use that command.
+* The user can type in a command after `help` to see how to use that command.
 
 Examples:
 * `help add` will show the user how to use the `add` command.
@@ -141,10 +141,6 @@ Examples:
 * `edit 3 s/` Clears existing subject for the 3rd person.
 * `edit 3 s/Math` Edits the subject of the 3rd person to be `Math`.
 * `edit 4 s/English s/Science` Edits the subjects of the 4th person to be `English` and `Science`.
-
-<box type="tip" seamless>
-
-</box>
 
 ### <span id="relating-persons"></span>Adding or deleting a relation : `relate`
 
