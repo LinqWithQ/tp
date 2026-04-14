@@ -157,9 +157,9 @@ Command format: `relate [a\RELATION]... [d\RELATION]...`
 Notes:
 * For `relate` command, at least one argument of `[a\RELATION]` or `[d\RELATION]` is required.
 * For any relation:
-  *  both person must exist.
+  * Both person must exist.
   * `PERSON1` and `PERSON2` must be different.
-  * There is no restriction for relation name (except `\` is not allowed).
+  * `RELATION_NAME` must not contain `/` or `\` and non-empty.
 * For adding relation, the relation to be added must not exist before adding.
 * For deleting relation, the relation to be deleted must exist before deleting.
 * For adding or deleting of relation, the change of relation field will be updated for both persons.
@@ -170,6 +170,7 @@ Notes:
 * The command is case-sensitive for `PERSON` e.g. `David` will not match `david`
 * The command is case-sensitive for `RELATION_NAME` e.g. `Student` will not match `student`
 * Supports multiple addition and/or deletion operations in the same command e.g. `relate a\RELATION1 d\RELATION2 ...`, `relate a\RELATION1 a\RELATION2 ...`
+* The command adds or deletes relations, but it does not affect which or how many persons are currently shown in the displayed contact list.
 
 Examples:
 * `relate a\Teacher Alex/Bernice Yu/Teacher/Student` will create a relation for both `Teacher Alex` and `Bernice Yu`.
