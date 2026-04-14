@@ -13,9 +13,9 @@ public class Phone {
     public static final String MESSAGE_CONSTRAINTS =
             "Phone numbers should contain at least 3 digits in the main body. "
                     + "Country code and area code may be included in the parentheses and "
-                    + "must contain only numbers with an optional `+` after the opening bracket. "
-                    + "You may use a single space or dash between digits for readability. "
-                    + "Examples: (+65) 9876 5432, (+1)(202) 555-0123, 98765432";
+                    + "must contain only numbers with an optional `+` after the opening bracket for the country code. "
+                    + "You may use a single space or dash between digits for readability in the main body. "
+                    + "Examples: `(+65) 9876 5432`, `(+1)(202) 555-0123`, `98765432`.";
     public static final String VALIDATION_REGEX = "^(?=(?:\\D*\\d){3,})(\\(\\+?\\d+\\))?"
             + "(\\(\\d+\\))?[\\s-]?\\d([\\s-]?\\d){2,}$";
     public final String value;

@@ -110,7 +110,7 @@ Notes:
 * Differing whitespace in between words in name field are different contacts (e.g. `John Doe` with one whitespace between `John` and `Doe` is a different contact from `John Doe` with two whitespaces between `John` and `Doe`).
 * Leading or trailing whitespaces in name field are ignored and are the same contact (e.g. ` John` with leading whitespace is the same as `John`).
 * Person fields are case-sensitive (e.g. `John Doe` and `john doe` are different names, `Math` and `math` are different subjects).
-* Phone numbers should contain at least 3 digits in the main body. Country code and area code may be included in the parentheses and must contain only numbers with an optional `+` after the opening bracket. You may use a single space or dash between digits for readability. Examples: `(+65) 9876 5432`, `(+1)(202) 555-0123`, `98765432`.
+* Phone numbers should contain at least 3 digits in the main body. Country code and area code may be included in the parentheses and must contain only numbers with an optional `+` after the opening bracket for the country code. You may use a single space or dash between digits for readability in the main body. Examples: `(+65) 9876 5432`, `(+1)(202) 555-0123`, `98765432`.
 
 * Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
@@ -138,7 +138,7 @@ Notes:
 * You can remove the person's subject by typing `s/` without specifying any subject after it.
 * You can remove all the person’s tags by typing `t/` without specifying any tags after it.
 * Inputs containing only spaces after `t/` or `s/` are invalid.
-* Phone numbers should contain at least 3 digits in the main body. Country code and area code may be included in the parentheses and must contain only numbers with an optional `+` after the opening bracket. You may use a single space or dash between digits for readability. Examples: `(+65) 9876 5432`, `(+1)(202) 555-0123`, `98765432`.
+* Phone numbers should contain at least 3 digits in the main body. Country code and area code may be included in the parentheses and must contain only numbers with an optional `+` after the opening bracket for the country code. You may use a single space or dash between digits for readability in the main body. Examples: `(+65) 9876 5432`, `(+1)(202) 555-0123`, `98765432`.
 
 Examples:
 * `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
