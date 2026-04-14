@@ -105,11 +105,11 @@ Command format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [s/SUBJECT]... [t/T
 Notes:
 * A person can have any number of subjects (including 0).
 * A person can have any number of tags (including 0).
-* Person fields are case-sensitive (e.g. `John Doe` and `john doe` are different names).
+* Name fields are case-sensitive (e.g. `John Doe` and `john doe` are different names).
 * Subject fields are case-sensitive (e.g. `Math` and `math` are different subjects).
 * Phone numbers should contain only digits and be at least 3 digits long, optionally prefixed with a parenthesized country code. Examples: `(+65)12389123`, `12398123`, `(1809)12312093`, `(23-39)1289312`
-* All subjects must be alphanumeric (without whitespaces) only and non-empty. If adding a subject using this command, whitespace is ignored before or after subject, but whitespace within subject is invalid. Adding an empty subject is not allowed (e.g: s/ with no input is not allowed). Remove the s/ entirely instead.
-* All tags must be alphanumeric (without whitespaces) only and non-empty. If adding a tag using this command, whitespace is ignored before or after tag, but whitespace within tag is invalid. Adding an empty tag is not allowed (e.g: t/ with no input is not allowed). Remove the t/ entirely instead.
+* All subjects must be alphanumeric (without whitespaces) only and non-empty. If adding a subject using this command, whitespace is ignored before or after subject, but whitespace within subject is invalid. Adding an empty subject is not allowed (e.g: `s/...` with no input is not allowed). Remove the `s/...` entirely instead.
+* All tags must be alphanumeric (without whitespaces) only and non-empty. If adding a tag using this command, whitespace is ignored before or after tag, but whitespace within tag is invalid. Adding an empty tag is not allowed (e.g: `t/...` with no input is not allowed). Remove the `t/...` entirely instead.
 
 * Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
