@@ -11,7 +11,7 @@ public class Phone {
 
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Phone numbers should contain 3 digits in the main body. "
+            "Phone numbers should contain at least 3 digits in the main body. "
                     + "Country code and area code may be included in the parentheses and "
                     + "must contain only numbers with an optional `+` after the opening bracket. "
                     + "You may use a single space or dash between digits for readability. "
