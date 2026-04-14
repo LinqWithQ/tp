@@ -481,7 +481,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC8 - Renaming a subject**
+**Use case: UC9 - Renaming a subject**
 
 **MSS**
 
@@ -504,7 +504,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-**Use case: UC8 - Editing subject field**
+**Use case: UC10 - Editing subject field**
 
 **MSS**
 
@@ -518,6 +518,31 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1a. Incorrect input format
 
     * 1a1: TutorMap shows an error message.
+
+      Use case ends.
+
+**Use case: UC11 - Finding persons by subject or tag keywords**
+
+**MSS**
+
+1.  User enters `find s/KEYWORD [MORE_KEYWORDS]` or `find t/KEYWORD [MORE_KEYWORDS]`
+2.  TutorMap normalizes extra whitespaces between keywords before searching
+3.  TutorMap matches persons whose subject or label contains at least one keyword (OR behavior)
+4.  TutorMap displays the matched persons and the result count
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The prefix is provided but no valid keyword is given.
+
+    * 1a1: TutorMap shows an error message.
+
+      Use case resumes at step 1.
+
+* 3a. There is no match.
+
+    * 3a1: TutorMap displays only the result count.
 
       Use case ends.
 
