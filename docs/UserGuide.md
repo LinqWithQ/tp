@@ -94,9 +94,6 @@ Notes:
 Examples:
 * `help add` will show the user how to use the `add` command.
 
-![help message](images/helpCommand.png)
-
-
 ### <span id="adding-person"></span>Adding a person: `add`
 
 Adds a person to TutorMap.
